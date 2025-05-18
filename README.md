@@ -55,7 +55,7 @@ glassBGR = glassPNG[:, :, :3]
 glassMask1 = glassPNG[:, :, 3]
 
 # Resize glassMask to match eyeROI size
-eyeROI = img[165:245, 125:305]  # Adjusted ROI
+eyeROI = img[165:245, 125:322]  # Adjusted ROI
 glassMask1 = cv2.resize(glassMask1, (eyeROI.shape[1], eyeROI.shape[0]))
 glassBGR = cv2.resize(glassBGR, (eyeROI.shape[1], eyeROI.shape[0]))
 
@@ -70,7 +70,7 @@ glassMask = glassMask.astype(np.float32) / 255  # Convert to float for blending
 
 # Masked eye region
 faceWithGlassesArithmetic = img.copy()
-eyeROI = faceWithGlassesArithmetic[165:245, 125:305] 
+eyeROI = faceWithGlassesArithmetic[165:245, 125:322] 
 
 # Ensure data types match
 eyeROI = eyeROI.astype(np.float32) / 255
@@ -91,7 +91,7 @@ plt.subplot(132); plt.imshow(maskedGlass[...,::-1]); plt.title("Masked Sunglass 
 plt.subplot(133); plt.imshow(eyeRoiFinal[...,::-1]); plt.title("Augmented Eye and Sunglass")
 
 # Final result with blending
-faceWithGlassesArithmetic[165:245, 125:305] = eyeRoiFinal 
+faceWithGlassesArithmetic[165:245, 125:322] = eyeRoiFinal 
 plt.figure(figsize=[10, 10])
 plt.subplot(121); plt.imshow(img[:,:,::-1]); plt.title("Original Image")
 plt.subplot(122); plt.imshow(faceWithGlassesArithmetic[:,:,::-1]); plt.title("With Sunglasses")
@@ -99,21 +99,15 @@ plt.subplot(122); plt.imshow(faceWithGlassesArithmetic[:,:,::-1]); plt.title("Wi
 plt.show()
 
 
+
+
 ```
 
 ## Output:
+![Screenshot 2025-05-18 091200](https://github.com/user-attachments/assets/d0c20be9-dd76-4fb8-a0f5-5d2e953f0d65)
+![Screenshot 2025-05-18 091218](https://github.com/user-attachments/assets/e5d037a1-cdac-406d-aabe-dc56a88e6127)
 
-## 1.Original Image:
 
-## 2.Glass:
-
-## 3.Glass Color Channel:
-
-## 4.Face WIth Glass:
-
-## 5.Glass On Eye Region:
-
-## 6.Final Image With Glass:
 
 ##  Result:
 Thus, the creative project designed to overlay sunglasses on individual passport size photo has been successfully executed.
